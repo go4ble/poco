@@ -1,0 +1,14 @@
+<h1>Hello, World!</h1>
+
+<% if @profile %>
+  <p>
+    Signed in as <%= @profile['email'] %>!
+    <a href="/logout">Sign out</a>
+  </p>
+<% else %>
+  <p>
+    <a href="/login">Sign in</a>
+  </p>
+<% end %>
+
+<iframe type="text/html" frameborder="0" width="480" height="394" src="//video.nest.com/embedded/live/chicken?autoplay=1" />
