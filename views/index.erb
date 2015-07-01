@@ -1,9 +1,15 @@
-<h1>Hello, World!</h1>
+<h1>Poco</h1>
 
 <% if @profile %>
   <p>
     Signed in as <%= @profile['email'] %>!
     <a href="/logout">Sign out</a>
+    <br />
+    <% if @profile['authorized'] %>
+      Authorized!
+    <% else %>
+      Unauthorized
+    <% end %>
   </p>
 <% else %>
   <p>
