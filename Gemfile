@@ -5,3 +5,5 @@ gem 'sinatra'
 gem 'thin'
 
 gem 'koala', '~>2.0'
+
+gem 'serialport'

@@ -3,6 +3,7 @@ require 'bundler'
 Bundler.require(:default)
 
 require './lib/whitelist'
+require './lib/mc_client'
 
 use Rack::Session::Cookie, secret: ENV['COOKIE_SECRET'] || raise('no COOKIE_SECRET')
 
@@ -34,4 +35,20 @@ get '/fb_callback' do
   # get the access token from facebook with your code
   session['access_token'] = session['oauth'].get_access_token(params[:code])
   redirect '/'
+end
+
+get '/mc_api/:cmd' do
+  if session['access_token']
+    graph = Koala::Facebook::API.new(session['access_token'])
+    @profile = graph.get_object('me', fields: 'email')
+    if Whitelist::exists?(@profile['email'])
+      mc_response = McClient::send(params['cmd'])
+      if mc_response.nil?
+        halt 408
+      else
+        return mc_response
+      end
+    end
+  end
+  halt 403
 end

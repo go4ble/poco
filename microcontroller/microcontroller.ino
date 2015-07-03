@@ -40,6 +40,8 @@ void loop() {
         startToggleDoor();
       } else if (!strcmp(GET_DOOR_STATUS, buf)) {
         getDoorStatus();
+      } else if (!strcmp("ping", buf)) {
+        Serial.println("pong");
       }
       buflen = 0;
     } else {
@@ -68,6 +70,7 @@ void startToggleDoor() {
     doorToggledAt = millis();
     digitalWrite(DOOR_PIN, HIGH);
   }
+  Serial.println("ok");
 }
 
 void endToggleDoor() {
