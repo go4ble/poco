@@ -27,7 +27,7 @@ unsigned long doorToggledAt;
 
 #define DOOR_STATUS_OPEN    "open"
 #define DOOR_STATUS_CLOSED  "closed"
-#define DOOR_STATUS_UNKNOWN "unkown"
+#define DOOR_STATUS_UNKNOWN "unknown"
 
 void loop() {
   while (Serial.available()) {

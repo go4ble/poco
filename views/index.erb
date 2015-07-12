@@ -1,20 +1,22 @@
 <h1>Poco</h1>
 
-<% if @profile %>
-  <p>
-    Signed in as <%= @profile['email'] %>!
-    <a href="/logout">Sign out</a>
-    <br />
+<div>
+  <% if @profile %>
+    <p>
+      Signed in as <%= @profile['email'] %>
+      <a href="/logout">Sign out</a>
+    </p>
     <% if @profile['authorized'] %>
-      Authorized!
+      <%= erb :mc_controls %>
     <% else %>
-      Unauthorized
+      <p>Sorry, you are not authorized to access coop controls.</p>
     <% end %>
-  </p>
-<% else %>
-  <p>
-    <a href="/login">Sign in</a>
-  </p>
-<% end %>
+  <% else %>
+    <p>
+      <a href="/login">Sign in</a>
+      to get access to coop controls.
+    </p>
+  <% end %>
+</div>
 
 <iframe type="text/html" frameborder="0" width="480" height="394" src="//video.nest.com/embedded/live/chicken?autoplay=1" />
