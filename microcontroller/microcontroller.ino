@@ -11,6 +11,7 @@
 
 void setup() {
   Serial.begin(9600);
+  analogReference(EXTERNAL);
   pinMode(DOOR_PIN, OUTPUT);
   digitalWrite(DOOR_PIN, LOW);
   pinMode(DOOR_OPEN_PIN, INPUT_PULLUP);
@@ -59,7 +60,7 @@ void loop() {
 
 void getTemp() {
   int a_read = analogRead(TEMP_PIN);
-  double v = a_read * 5.0 / 1023;
+  double v = a_read * 3.3 / 1024;
   double c = v * 100 - 50;
   Serial.println(c);
 }
